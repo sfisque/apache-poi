@@ -51,7 +51,7 @@ final class TestAverageIf {
 
     private static void confirmDouble(double expected, ValueEval actualEval) {
         assertTrue(actualEval instanceof NumericValueEval, "Expected numeric result");
-        NumericValueEval nve = (NumericValueEval)actualEval;
+        NumericValueEval nve = (NumericValueEval) actualEval;
         assertEquals(expected, nve.getNumberValue(), 0);
     }
 
@@ -65,12 +65,12 @@ final class TestAverageIf {
     }
 
     /**
-     *  Example 1 from
-     *  https://support.microsoft.com/en-us/office/averageif-function-faec8e2e-0dec-4308-af69-f5576d8ac642
+     * Example 1 from
+     * https://support.microsoft.com/en-us/office/averageif-function-faec8e2e-0dec-4308-af69-f5576d8ac642
      */
     @Test
     void testExample1() {
-        ValueEval[] b2b5 = new ValueEval[] {
+        ValueEval[] b2b5 = new ValueEval[]{
                 new NumberEval(7000),
                 new NumberEval(14000),
                 new NumberEval(21000),
@@ -83,9 +83,9 @@ final class TestAverageIf {
                 EvalFactory.createAreaEval("B2:B5", b2b5),
                 new StringEval("<23000")
         };
-        confirm( 14000, args);
+        confirm(14000, args);
 
-        ValueEval[] a2a5 = new ValueEval[] {
+        ValueEval[] a2a5 = new ValueEval[]{
                 new NumberEval(100000),
                 new NumberEval(200000),
                 new NumberEval(300000),
@@ -97,7 +97,7 @@ final class TestAverageIf {
                 new StringEval("<250000"),
                 EvalFactory.createAreaEval("A2:A5", a2a5)
         };
-        confirm( 150000, args);
+        confirm(150000, args);
 
         // "=AVERAGEIF(A2:A5, "<95000")"
         args = new ValueEval[]{
@@ -107,16 +107,16 @@ final class TestAverageIf {
         };
 
         confirmError(ErrorEval.DIV_ZERO, args);
-        
+
         // "=AVERAGEIF(A2:A5, "<95000", B2:B5 )"
         args = new ValueEval[]{
                 EvalFactory.createAreaEval("A2:A5", a2a5),
                 new StringEval(">250000"),
                 EvalFactory.createAreaEval("B2:B5", b2b5)
         };
-        confirm( 24500, args);
-/*
-*/        
+        confirm(24500, args);
+        /*
+         */
     }
 
 }
