@@ -115,8 +115,6 @@ final class TestAverageIf {
                 EvalFactory.createAreaEval("B2:B5", b2b5)
         };
         confirm(24500, args);
-        /*
-         */
     }
 
 }
